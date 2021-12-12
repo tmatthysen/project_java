@@ -1,17 +1,5 @@
 version: '3.8'
 services:
-  jenkins:
-    image: ayo_project_jenkins:latest
-    privileged: true
-    user: root
-    ports:
-      - 8080:8080
-      - 50000:50000
-    container_name: jenkins
-    volumes:
-      - ~/jenkins_data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-
   maven_app:
     image: ayo_project_maven_app:latest
     privileged: true
