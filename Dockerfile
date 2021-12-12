@@ -1,6 +1,8 @@
-FROM tomcat:latest
-WORKDIR /usr/local/tomcat/webapps
-ADD target/maven-0.0.1-SNAPSHOT.war .
-RUN sed -i 's/port="8080"/port="8081"/' /usr/local/tomcat/conf/server.xml
-EXPOSE 8081
-CMD ["catalina.sh","run"]
+FROM jenkins/jenkins:latest
+USER root
+RUN curl https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz | tar xvz -C /tmp/ && mv /tmp/docker/docker /usr/bin/docker
+RUN curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+RUN chmod 755 /usr/local/bin/docker-compose
+RUN usermod -a -G sudo jenkins
+RUN echo "jenkins ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+USER jenkins
