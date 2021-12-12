@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   jenkins:
-    build: jenkins/
+    image: ayo_project_jenkins:latest
     privileged: true
     user: root
     ports:
@@ -13,7 +13,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   maven_app:
-    build: ./
+    image: ayo_project_maven_app:latest
     privileged: true
     user: root
     ports:
