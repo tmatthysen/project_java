@@ -2,7 +2,7 @@ version: '3.8'
 services:    
   maven_app:
     build: ./
-    image: mavenApp:latest
+    image: mavenapp_maven_app:latest
     privileged: true
     user: root
     ports: 
