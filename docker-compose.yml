@@ -1,24 +1,10 @@
 version: '3.8'
-services:
-  jenkins:
-    build: ~/jenkins/
-    privileged: true
-    user: root
-    ports:
-      - 8080:8080
-      - 50000:50000
-    container_name: jenkins
-    volumes:
-      - ~/jenkins_data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      
+services:    
   maven_app:
-    build: ~/mavenApp/
+    build: ./
     privileged: true
     user: root
     ports: 
       - 80:8081
       - 443:8443
     container_name: mavenApp
-#    volumes:
-#     - ~/tomcatconf:/usr/local/tomcat/conf/
